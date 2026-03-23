@@ -40,10 +40,14 @@ export function tollgateMcp(config: TollgateMcpConfig) {
   // eslint-disable-next-line @typescript-eslint/no-require-imports
   const { x402ResourceServer, HTTPFacilitatorClient } = require("@x402/core/server");
 
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
+  const { ExactEvmScheme } = require("@x402/evm/exact/server");
+
   const facilitator = new HTTPFacilitatorClient({
     url: resolved.facilitatorUrl,
   });
   const server = new x402ResourceServer(facilitator);
+  server.register(resolved.networkId, new ExactEvmScheme());
 
   // Build payment requirements synchronously from config
   const accepts = [

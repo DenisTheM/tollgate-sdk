@@ -35,10 +35,14 @@ export function withTollgate<T = unknown>(
   // eslint-disable-next-line @typescript-eslint/no-require-imports
   const { x402ResourceServer, HTTPFacilitatorClient } = require("@x402/core/server");
 
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
+  const { ExactEvmScheme } = require("@x402/evm/exact/server");
+
   const facilitator = new HTTPFacilitatorClient({
     url: resolved.facilitatorUrl,
   });
   const server = new x402ResourceServer(facilitator);
+  server.register(resolved.networkId, new ExactEvmScheme());
 
   return withX402(routeHandler, routeConfig, server);
 }
@@ -67,9 +71,13 @@ export function tollgateProxy(config: TollgateConfig) {
   // eslint-disable-next-line @typescript-eslint/no-require-imports
   const { HTTPFacilitatorClient } = require("@x402/core/server");
 
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
+  const { ExactEvmScheme } = require("@x402/evm/exact/server");
+
   const facilitator = new HTTPFacilitatorClient({
     url: resolved.facilitatorUrl,
   });
+  const schemes = [{ network: resolved.networkId, server: new ExactEvmScheme() }];
 
-  return paymentProxyFromConfig(routes, facilitator);
+  return paymentProxyFromConfig(routes, facilitator, schemes);
 }

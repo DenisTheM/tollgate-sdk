@@ -35,12 +35,17 @@ export function tollgate(config: TollgateConfig): RequestHandler {
   const { paymentMiddlewareFromConfig } = require("@x402/express");
   // eslint-disable-next-line @typescript-eslint/no-require-imports
   const { HTTPFacilitatorClient } = require("@x402/core/server");
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
+  const { ExactEvmScheme } = require("@x402/evm/exact/server");
 
   const facilitator = new HTTPFacilitatorClient({
     url: resolved.facilitatorUrl,
   });
 
-  const middleware = paymentMiddlewareFromConfig(routes, facilitator);
+  const evmScheme = new ExactEvmScheme();
+  const schemes = [{ network: resolved.networkId, server: evmScheme }];
+
+  const middleware = paymentMiddlewareFromConfig(routes, facilitator, schemes);
 
   // If onPayment callback is set, wrap middleware to intercept successful payments
   if (config.onPayment) {
