@@ -1,0 +1,18 @@
+node_modules/
+dist/
+*.tgz
+
+# Environment & secrets
+.env
+.env.*
+!.env.example
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+
+# Debug
+npm-debug.log*
