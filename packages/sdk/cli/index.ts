@@ -173,15 +173,22 @@ Why Coinbase:
   console.log(`\n--- End snippet ---\n`);
 
   // 7. Next steps
+  const peerDeps: Record<string, string> = {
+    express: "@x402/express",
+    next: "@x402/next",
+    mcp: "@x402/mcp",
+  };
+  const peerDep = peerDeps[framework];
+
   console.log("Next steps:");
-  console.log(`  1. npm install @tollgate/sdk`);
+  console.log(`  1. npm install ${peerDep}`);
   console.log(`  2. Paste the code snippet above into your project`);
   console.log(`  3. Start your server`);
-  if (network === "base-sepolia") {
+  if (network.includes("sepolia") || network.includes("amoy")) {
     console.log(`  4. Test: curl -i http://localhost:3000/api/hello`);
     console.log(`     → You should get a 402 Payment Required response`);
   } else {
-    console.log(`  4. Test with a real USDC payment on Base`);
+    console.log(`  4. Test with a real USDC payment`);
   }
   console.log();
 

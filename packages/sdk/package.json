@@ -1,6 +1,6 @@
 {
   "name": "@tollgate/sdk",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "One-line API monetization with x402. Accept crypto payments with a single function call.",
   "license": "MIT",
   "type": "module",
