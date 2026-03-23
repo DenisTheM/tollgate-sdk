@@ -230,6 +230,8 @@ The callback is fire-and-forget — it never blocks the API response.
 
 **No Tollgate account needed.** No dashboard, no API keys, no middleman. Payments go directly from the client to your wallet on the blockchain.
 
+**Zero gas fees for agents.** USDC payments use EIP-3009 (`transferWithAuthorization`) — the x402 facilitator sponsors gas. Agents only need USDC, no native tokens like ETH or MATIC.
+
 ---
 
 ## Networks & Tokens
@@ -277,6 +279,7 @@ Any EVM-compatible wallet works — MetaMask, Rainbow, etc.
 - **No middleman** — Payments go directly from client to your wallet
 - **Input validation** — Wallet addresses, prices, routes, and URLs are rigorously validated
 - **HTTPS enforced** — Facilitator URLs must use HTTPS (except localhost for development)
+- **Gas-free payments** — Agents pay only USDC, gas is sponsored by the facilitator via EIP-3009
 
 Found a vulnerability? See [SECURITY.md](./SECURITY.md).
 
@@ -308,7 +311,7 @@ npm install @tollgate/sdk @x402/mcp
 ## FAQ
 
 **How do AI agents pay my API?**
-AI agents with x402-compatible wallets (like Coinbase AgentKit) automatically detect the 402 response, pay the requested amount in USDC, and retry the request — all without human intervention.
+AI agents with x402-compatible wallets (like Coinbase AgentKit) automatically detect the 402 response, pay the requested amount in USDC, and retry the request — all without human intervention. Agents only need USDC — no native tokens (ETH, MATIC) required. Gas fees are sponsored by the x402 facilitator.
 
 **What are the transaction fees?**
 Base network fees are typically < $0.01 per transaction. There are no Tollgate fees.
