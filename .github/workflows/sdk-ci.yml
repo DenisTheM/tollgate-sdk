@@ -74,6 +74,12 @@ jobs:
       - run: npm ci
       - run: npm run build
 
+      # Ensure .npmrc with auth is available in working directory
+      - name: Configure npm auth
+        run: echo "//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}" > .npmrc
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
       # Only publish if version changed
       - name: Check if version changed
         id: version
