@@ -5,21 +5,16 @@
       <stop offset="100%" stop-color="#0071e3"/>
     </linearGradient>
   </defs>
-  <!-- Background -->
   <rect width="120" height="120" rx="28" fill="url(#g)"/>
-  <!-- Toll barrier post -->
-  <rect x="32" y="36" width="10" height="52" rx="5" fill="#fbfbfd"/>
-  <!-- Barrier arm - raised -->
-  <rect x="37" y="36" width="52" height="10" rx="5" fill="#fbfbfd"/>
-  <!-- Barrier arm stripe accent -->
-  <rect x="55" y="36" width="12" height="10" rx="0" fill="url(#g)" opacity="0.3"/>
-  <rect x="75" y="36" width="12" height="10" rx="0" fill="url(#g)" opacity="0.3"/>
+  <!-- Post -->
+  <rect x="32" y="36" width="10" height="52" rx="5" fill="#fff"/>
+  <!-- Barrier arm raised -->
+  <rect x="37" y="36" width="52" height="10" rx="5" fill="#fff"/>
   <!-- Base plate -->
-  <rect x="26" y="82" width="22" height="6" rx="3" fill="#fbfbfd" opacity="0.6"/>
-  <!-- Coin / payment symbol -->
-  <circle cx="74" cy="70" r="16" fill="#fbfbfd" opacity="0.25"/>
-  <circle cx="74" cy="70" r="12" stroke="#fbfbfd" stroke-width="3" fill="none"/>
-  <!-- Arrow through gate (payment flow) -->
-  <path d="M50 70 L66 70" stroke="#fbfbfd" stroke-width="3" stroke-linecap="round"/>
-  <path d="M62 65 L68 70 L62 75" stroke="#fbfbfd" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <rect x="26" y="82" width="22" height="6" rx="3" fill="#fff"/>
+  <!-- Coin -->
+  <circle cx="74" cy="70" r="12" stroke="#fff" stroke-width="3" fill="none"/>
+  <!-- Arrow -->
+  <path d="M50 70L66 70" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+  <path d="M62 65L68 70L62 75" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
 </svg>
