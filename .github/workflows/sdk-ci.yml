@@ -3,10 +3,10 @@ name: SDK CI
 on:
   push:
     branches: [main]
-    paths: [packages/sdk/**]
+    paths: [packages/sdk/**, .github/workflows/sdk-ci.yml]
   pull_request:
     branches: [main]
-    paths: [packages/sdk/**]
+    paths: [packages/sdk/**, .github/workflows/sdk-ci.yml]
 
 defaults:
   run:
