@@ -332,7 +332,6 @@ Any request without a valid payment header gets a 402 response. If you want some
 - [ ] Dashboard with analytics and revenue tracking
 - [ ] Tax reporting and compliance tools
 - [ ] Solana support
-- [ ] USDT support
 - [ ] Dynamic pricing
 - [ ] Trust scoring and KYA (Know Your Agent)
 
