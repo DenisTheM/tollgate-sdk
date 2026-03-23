@@ -18,6 +18,22 @@ describe("resolveNetwork", () => {
     expect(resolveNetwork("base-sepolia")).toBe("eip155:84532");
   });
 
+  it("resolves arbitrum to CAIP-2", () => {
+    expect(resolveNetwork("arbitrum")).toBe("eip155:42161");
+  });
+
+  it("resolves arbitrum-sepolia to CAIP-2", () => {
+    expect(resolveNetwork("arbitrum-sepolia")).toBe("eip155:421614");
+  });
+
+  it("resolves polygon to CAIP-2", () => {
+    expect(resolveNetwork("polygon")).toBe("eip155:137");
+  });
+
+  it("resolves polygon-amoy to CAIP-2", () => {
+    expect(resolveNetwork("polygon-amoy")).toBe("eip155:80002");
+  });
+
   it("throws for unknown network", () => {
     // @ts-expect-error testing invalid input
     expect(() => resolveNetwork("ethereum")).toThrow("Unknown network");
@@ -34,6 +50,18 @@ describe("resolveToken", () => {
   it("resolves USDC on base-sepolia", () => {
     expect(resolveToken("base-sepolia", "USDC")).toBe(
       "0x036CbD53842c5426634e7929541eC2318f3dCF7e"
+    );
+  });
+
+  it("resolves USDC on arbitrum", () => {
+    expect(resolveToken("arbitrum", "USDC")).toBe(
+      "0xaf88d065e77c8cC2239327C5EDb3A432268e5831"
+    );
+  });
+
+  it("resolves USDC on polygon", () => {
+    expect(resolveToken("polygon", "USDC")).toBe(
+      "0x3c499c542cEF5E3811e1192ce70d8cC03d5c3359"
     );
   });
 });

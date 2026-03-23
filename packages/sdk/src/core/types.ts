@@ -1,4 +1,10 @@
-export type NetworkName = "base" | "base-sepolia";
+export type NetworkName =
+  | "base"
+  | "base-sepolia"
+  | "arbitrum"
+  | "arbitrum-sepolia"
+  | "polygon"
+  | "polygon-amoy";
 export type TokenName = "USDC";
 
 export interface TollgateConfig {

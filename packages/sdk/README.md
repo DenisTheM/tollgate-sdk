@@ -179,7 +179,7 @@ tollgate({
   },
 
   // Optional
-  network: "base",               // "base" (mainnet) or "base-sepolia" (testnet)
+  network: "base",               // "base" | "arbitrum" | "polygon" + testnets
   token: "USDC",                 // Payment token (currently only USDC)
   maxTimeoutSeconds: 60,         // Payment verification timeout (1–300)
   facilitatorUrl: "https://...", // Custom x402 facilitator URL
@@ -233,22 +233,27 @@ The callback is fire-and-forget — it never blocks the API response.
 
 ## Networks & Tokens
 
-| Network | Chain | Use Case |
-|---|---|---|
-| `base` | Base Mainnet (EIP-155: 8453) | Production |
-| `base-sepolia` | Base Sepolia (EIP-155: 84532) | Testing |
+All networks use sub-cent transaction fees, making them suitable for API micropayments.
 
-| Token | Contract (Base) | Contract (Base Sepolia) |
-|---|---|---|
-| `USDC` | `0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913` | `0x036CbD53842c5426634e7929541eC2318f3dCF7e` |
+| Network | Chain ID | Testnet | Use Case |
+|---|---|---|---|
+| `base` | EIP-155: 8453 | `base-sepolia` | Recommended default |
+| `arbitrum` | EIP-155: 42161 | `arbitrum-sepolia` | DeFi-heavy ecosystem |
+| `polygon` | EIP-155: 137 | `polygon-amoy` | High throughput |
 
-Start with `base-sepolia` for development. Switch to `base` when you're ready for production.
+| Token | Base | Arbitrum | Polygon |
+|---|---|---|---|
+| `USDC` | [`0x8335...`](https://basescan.org/address/0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913) | [`0xaf88...`](https://arbiscan.io/address/0xaf88d065e77c8cC2239327C5EDb3A432268e5831) | [`0x3c49...`](https://polygonscan.com/address/0x3c499c542cEF5E3811e1192ce70d8cC03d5c3359) |
+
+All contract addresses are native USDC issued by Circle. Verified against [Circle's official documentation](https://developers.circle.com/stablecoins/usdc-contract-addresses).
+
+Start with a testnet (e.g. `base-sepolia`) for development. Switch to a mainnet when you're ready for production.
 
 ---
 
 ## Wallet Setup
 
-You need an EVM wallet that can receive USDC on Base. We recommend **Coinbase Smart Wallet**:
+You need an EVM wallet that can receive USDC. We recommend **Coinbase Smart Wallet**:
 
 1. Download the [Coinbase](https://www.coinbase.com) app
 2. Create an account (~2 minutes)
@@ -322,7 +327,7 @@ Any request without a valid payment header gets a 402 response. If you want some
 
 - [ ] Dashboard with analytics and revenue tracking
 - [ ] Tax reporting and compliance tools
-- [ ] Multi-chain support (Ethereum, Solana, Arbitrum)
+- [ ] Solana support
 - [ ] USDT support
 - [ ] Dynamic pricing
 - [ ] Trust scoring and KYA (Know Your Agent)

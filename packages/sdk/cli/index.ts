@@ -129,9 +129,17 @@ Why Coinbase:
   // 3. Network
   console.log("\nChoose a network:");
   console.log("  1) Base Sepolia (Testnet) — recommended to start");
-  console.log("  2) Base (Mainnet) — for production\n");
-  const networkChoice = await ask("Network (1 or 2): ");
-  const network = networkChoice === "2" ? "base" : "base-sepolia";
+  console.log("  2) Base (Mainnet)");
+  console.log("  3) Arbitrum (Mainnet)");
+  console.log("  4) Polygon (Mainnet)\n");
+  const networkChoice = await ask("Network (1-4): ");
+  const networkMap: Record<string, string> = {
+    "1": "base-sepolia",
+    "2": "base",
+    "3": "arbitrum",
+    "4": "polygon",
+  };
+  const network = networkMap[networkChoice] ?? "base-sepolia";
 
   // 4. Price
   const priceInput = await ask("\nDefault price per request in USD (e.g. 0.01): ");
